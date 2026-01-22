@@ -1,0 +1,32 @@
+name: Update Discord Channel
+
+on:
+  schedule:
+    # Runs every 5 minutes (GitHub Actions minimum)
+    - cron: "*/5 * * * *"
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run update script
+        env:
+          TELNET_HOST: ${{ secrets.TELNET_HOST }}
+          TELNET_PORT: ${{ secrets.TELNET_PORT }}
+          TELNET_PASSWORD: ${{ secrets.TELNET_PASSWORD }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_CHANNEL_ID: ${{ secrets.DISCORD_CHANNEL_ID }}
+        run: node index.js
