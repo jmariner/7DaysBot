@@ -1,6 +1,17 @@
 {
+  "name": "7daysbot",
+  "version": "1.0.0",
+  "description": "Azure Function to update Discord channel with 7 Days to Die server status",
+  "scripts": {
+    "start": "func start",
+    "local": "node local.js",
+    "test": "echo \"No tests yet\""
+  },
   "dependencies": {
     "dotenv": "^17.2.3",
     "telnet-client": "^2.2.9"
+  },
+  "devDependencies": {
+    "azure-functions-core-tools": "^4.0.5611"
   }
 }
