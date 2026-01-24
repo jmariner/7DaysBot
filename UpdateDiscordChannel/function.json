@@ -5,7 +5,7 @@
             "type": "timerTrigger",
             "direction": "in",
             "schedule": "0 * * * * *",
-            "useMonitor": false
+            "useMonitor": true
         }
     ]
 }
