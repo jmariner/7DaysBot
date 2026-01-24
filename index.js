@@ -62,7 +62,7 @@ async function tryHandleData() {
 const params = {
 	host: process.env.TELNET_HOST,
 	port: process.env.TELNET_PORT,
-	timeout: 15_000,
+	timeout: 5_000,
 	username: "",
 	password: process.env.TELNET_PASSWORD,
 	passwordPrompt: /Please enter password:/i,
@@ -115,6 +115,7 @@ conn.on("failedlogin", () => {
 
 conn.on("timeout", () => {
 	logDebug("Telnet connection timed out.");
+	process.exit(1);
 });
 
 conn.on("close", () => {
